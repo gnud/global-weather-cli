@@ -44,9 +44,16 @@ Running test
 npm test
 ```
 
+# IDE settings
+
+## WebStorm
+
+ESLint [setup](https://www.jetbrains.com/help/webstorm/eslint.html#ws_js_linters_eslint_install) will
+allow detection of rules mismatch.
+
 # Troubleshot
 
-## Webstorm
+## WebStorm
 
 - "describe" and "it" are not recognizable by the IDE.
 
