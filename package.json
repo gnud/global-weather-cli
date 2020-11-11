@@ -1,0 +1,16 @@
+{
+  "name": "global-weather-cli",
+  "version": "1.0.0",
+  "description": "Weather cli command",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./weather.js",
+    "test": "jest"
+  },
+  "keywords": [],
+  "author": "Damjan Dimitrioski",
+  "license": "GPL3",
+  "devDependencies": {
+    "jest": "^26.6.3"
+  }
+}
