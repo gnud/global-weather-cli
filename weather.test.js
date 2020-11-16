@@ -55,5 +55,26 @@ describe('weatherAppAPIPostal', () => {
                 expect(item).toBeUndefined()
             })
     })
+
+    it('apiPostalLookupCityInvalidApiKey', async () => {
+        const api = require('./src/api')
+
+        jest.spyOn(process, 'exit').mockImplementation((code, a, b, c) => {
+            expect(code).toEqual(1)
+        })
+
+        process.env.GEO_APIFY_TOKEN = 'COME-ON-LET-ME-IN-PLEASE'
+        const targetPostalCode = '1000'
+
+        await api.fetchPostalApi(targetPostalCode)
+            .then(item => {
+                expect(item).toBeUndefined() // should not stop here
+            })
+            .catch(err => {
+                expect(err.response.status).toEqual(401)
+            })
+
+    })
+
 })
 
