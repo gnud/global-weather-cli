@@ -28,7 +28,7 @@ describe('weatherAppAPIPostal', () => {
         const api = require('./src/api')
         const targetPostalCode = '1000' // Skopje, Macedonia
 
-        jest.spyOn(process, 'exit').mockImplementation((code, a, b, c) => {
+        jest.spyOn(process, 'exit').mockImplementation((code) => {
             expect(code).toEqual(0)
         })
 
@@ -43,7 +43,7 @@ describe('weatherAppAPIPostal', () => {
     it('apiPostalLookupCityNoApiKey', async () => {
         const api = require('./src/api')
 
-        jest.spyOn(process, 'exit').mockImplementation((code, a, b, c) => {
+        jest.spyOn(process, 'exit').mockImplementation((code) => {
             expect(code).toEqual(1)
         })
 
@@ -59,7 +59,7 @@ describe('weatherAppAPIPostal', () => {
     it('apiPostalLookupCityInvalidApiKey', async () => {
         const api = require('./src/api')
 
-        jest.spyOn(process, 'exit').mockImplementation((code, a, b, c) => {
+        jest.spyOn(process, 'exit').mockImplementation((code) => {
             expect(code).toEqual(1)
         })
 
@@ -87,7 +87,7 @@ describe('weatherAppAPIWeather', () => {
         const api = require('./src/api')
         const location = 'Skopje' // Skopje, Macedonia
 
-        jest.spyOn(process, 'exit').mockImplementation((code, a, b, c) => {
+        jest.spyOn(process, 'exit').mockImplementation((code) => {
             expect(code).toEqual(0)
         })
 
