@@ -4,7 +4,7 @@
   "description": "Weather cli command",
   "main": "index.js",
   "scripts": {
-    "start": "node ./weather.js",
+    "start": "node ./index.js",
     "test": "jest"
   },
   "keywords": [],
