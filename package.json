@@ -16,8 +16,10 @@
   },
   "dependencies": {
     "axios": "^0.21.0",
+    "country-state-city": "^1.0.5",
     "dotenv": "^8.2.0",
     "lodash": "^4.17.20",
-    "moment": "^2.29.1"
+    "moment": "^2.29.1",
+    "postal-codes-js": "^2.5.2"
   }
 }
