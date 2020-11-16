@@ -21,4 +21,24 @@ async function fetchPostalApi(q) {
     })
 }
 
+async function owAPIFetch(location) {
+    const apiEMsg = `App is mis-configured, add your OPEN_WEATHER_MAP_TOKEN key in an .env file`
+
+    const url = 'https://api.openweathermap.org/data/2.5/weather'
+    const token = process.env.OPEN_WEATHER_MAP_TOKEN
+
+    if (!token) {
+        console.log(apiEMsg)
+        return process.exit(2)
+    }
+
+    return await axios.get(url, {
+        params: {
+            q: location,
+            APPID: token
+        }
+    })
+}
+
 module.exports.fetchPostalApi = fetchPostalApi
+module.exports.owAPIFetch = owAPIFetch
