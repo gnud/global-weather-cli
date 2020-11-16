@@ -1,6 +1,5 @@
 describe('weatherApp', () => {
     it('currentTimeCreatesAMoment', async () => {
-        const moment = require('moment')
         const timeUtils = require('../src/timeUtils')
 
         const utcNow = timeUtils.currentTime()
