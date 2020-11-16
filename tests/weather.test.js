@@ -1,6 +1,6 @@
 describe('weatherApp', () => {
     it('parseCliArguments', async () => {
-        const utils = require('./src/utils')
+        const utils = require('../src/utils')
 
         const argsString = 'New York,10005,Tokyo,São Paulo,Pluto'
         const argsList = ['New York', '10005', 'Tokyo', 'São Paulo', 'Pluto']
@@ -25,8 +25,8 @@ describe('weatherAppAPIPostal', () => {
          * GEO_APIFY_TOKEN must be set in the .env file or expect always to fail
          */
 
-        const api = require('./src/api')
-        const enums = require('./src/enums')
+        const api = require('../src/api')
+        const enums = require('../src/enums')
 
         const targetPostalCode = '1000' // Skopje, Macedonia
 
@@ -43,8 +43,8 @@ describe('weatherAppAPIPostal', () => {
     })
 
     it('apiPostalLookupCityNoApiKey', async () => {
-        const api = require('./src/api')
-        const enums = require('./src/enums')
+        const api = require('../src/api')
+        const enums = require('../src/enums')
 
         jest.spyOn(process, 'exit').mockImplementation((code) => {
             expect(code).toEqual(enums.ExitCodes.GEO_APIFY_MISSING)
@@ -60,8 +60,8 @@ describe('weatherAppAPIPostal', () => {
     })
 
     it('apiPostalLookupCityInvalidApiKey', async () => {
-        const api = require('./src/api')
-        const enums = require('./src/enums')
+        const api = require('../src/api')
+        const enums = require('../src/enums')
 
         jest.spyOn(process, 'exit').mockImplementation((code) => {
             expect(code).toEqual(enums.ExitCodes.GEO_APIFY_MISSING)
@@ -95,8 +95,8 @@ describe('weatherAppAPIWeather', () => {
          * OPEN_WEATHER_MAP_TOKEN must be set in the .env file or expect always to fail
          */
 
-        const api = require('./src/api')
-        const enums = require('./src/enums')
+        const api = require('../src/api')
+        const enums = require('../src/enums')
 
         const location = 'Skopje' // Skopje, Macedonia
 
@@ -113,8 +113,8 @@ describe('weatherAppAPIWeather', () => {
     })
 
     it('apiWeatherFetchNoApiKey', async () => {
-        const api = require('./src/api')
-        const enums = require('./src/enums')
+        const api = require('../src/api')
+        const enums = require('../src/enums')
 
         jest.spyOn(process, 'exit').mockImplementation((code) => {
             expect(code).toEqual(enums.ExitCodes.WEATHER_API_MISSING)
@@ -130,8 +130,8 @@ describe('weatherAppAPIWeather', () => {
     })
 
     it('apiWeatherFetchInvalidApiKey', async () => {
-        const api = require('./src/api')
-        const enums = require('./src/enums')
+        const api = require('../src/api')
+        const enums = require('../src/enums')
 
         jest.spyOn(process, 'exit').mockImplementation((code) => {
             expect(code).toEqual(enums.ExitCodes.WEATHER_API_MISSING)
@@ -150,7 +150,7 @@ describe('weatherAppAPIWeather', () => {
     })
 
     it('apiWeatherProcessData', async () => {
-        const api = require('./src/api')
+        const api = require('../src/api')
 
         const location = 'Skopje' // Skopje, Macedonia
 
