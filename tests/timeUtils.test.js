@@ -1,4 +1,4 @@
-describe('weatherApp', () => {
+describe('weatherAppTimeUtils', () => {
     it('currentTimeCreatesAMoment', async () => {
         const timeUtils = require('../src/timeUtils')
 
