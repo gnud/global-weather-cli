@@ -12,7 +12,7 @@ describe('weatherAppUi', () => {
 
         await ui.displaySingleRow(mockData)
 
-        expect(spy.mock.calls.slice(0, 4).join()). toContain([
+        expect(spy.mock.calls.slice(0, 4).join()).toContain([
             [
                 "Data for : Nowhere"
             ],
