@@ -44,22 +44,10 @@ async function owAPIFetch(location) {
 async function processWeather(location) {
     const res = await owAPIFetch(location)
 
-    const emptyData = {
-        data: {
-            "temp": null,
-            "feels_like": null,
-            "temp_min": null,
-            "temp_max": null,
-            "pressure": null,
-            "humidity": null
-        },
-        timezone: -0
-    }
-
     return {
         data: res.data.main,
         timezone: res.data.timezone
-    } || emptyData
+    } || enums.emptyData
 }
 
 module.exports.fetchPostalApi = fetchPostalApi
