@@ -26,10 +26,12 @@ describe('weatherAppAPIPostal', () => {
          */
 
         const api = require('./src/api')
+        const enums = require('./src/enums')
+
         const targetPostalCode = '1000' // Skopje, Macedonia
 
         jest.spyOn(process, 'exit').mockImplementation((code) => {
-            expect(code).toEqual(0)
+            expect(code).toEqual(enums.ExitCodes.SUCCESS)
         })
 
         await api.fetchPostalApi(targetPostalCode).then(item => {
@@ -42,9 +44,10 @@ describe('weatherAppAPIPostal', () => {
 
     it('apiPostalLookupCityNoApiKey', async () => {
         const api = require('./src/api')
+        const enums = require('./src/enums')
 
         jest.spyOn(process, 'exit').mockImplementation((code) => {
-            expect(code).toEqual(1)
+            expect(code).toEqual(enums.ExitCodes.GEO_APIFY_MISSING)
         })
 
         delete process.env.GEO_APIFY_TOKEN // Removing token to cause a crash
@@ -58,9 +61,10 @@ describe('weatherAppAPIPostal', () => {
 
     it('apiPostalLookupCityInvalidApiKey', async () => {
         const api = require('./src/api')
+        const enums = require('./src/enums')
 
         jest.spyOn(process, 'exit').mockImplementation((code) => {
-            expect(code).toEqual(1)
+            expect(code).toEqual(enums.ExitCodes.GEO_APIFY_MISSING)
         })
 
         process.env.GEO_APIFY_TOKEN = 'COME-ON-LET-ME-IN-PLEASE'
@@ -85,10 +89,12 @@ describe('weatherAppAPIWeather', () => {
          */
 
         const api = require('./src/api')
+        const enums = require('./src/enums')
+
         const location = 'Skopje' // Skopje, Macedonia
 
         jest.spyOn(process, 'exit').mockImplementation((code) => {
-            expect(code).toEqual(0)
+            expect(code).toEqual(enums.ExitCodes.SUCCESS)
         })
 
         await api.owAPIFetch(location).then(item => {
