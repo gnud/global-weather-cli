@@ -10,7 +10,7 @@ describe('weatherApp', () => {
         expect(utcNow._isAMomentObject).toBeTruthy()
     })
 
-    it('time2TzDiffNewDateWithThatTimeZone', async () => {
+    it('timeZoneDifferenceTimeAndSeconds', async () => {
         const timeUtils = require('../src/timeUtils')
 
         const utcNow = timeUtils.currentTime()
