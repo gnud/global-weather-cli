@@ -9,6 +9,10 @@
     "indent": 2,
     "linebreak-style": ["error", "unix"],
     "eol-last": 1,
-    "semi": [2, "never"]
+    "semi": [2, "never"],
+    "prefer-destructuring": ["error", {
+      "array": true,
+      "object": true
+    }]
   }
 }
