@@ -79,5 +79,24 @@ describe('weatherAppAPIPostal', () => {
 })
 
 describe('weatherAppAPIWeather', () => {
+    it('apiWeatherFetch', async () => {
+        /**
+         * OPEN_WEATHER_MAP_TOKEN must be set in the .env file or expect always to fail
+         */
+
+        const api = require('./src/api')
+        const location = 'Skopje' // Skopje, Macedonia
+
+        jest.spyOn(process, 'exit').mockImplementation((code, a, b, c) => {
+            expect(code).toEqual(0)
+        })
+
+        await api.owAPIFetch(location).then(item => {
+            expect(item.name).toEqual(location)
+        })
+            .catch(err => {
+                expect(err.response.status).toEqual(401)
+            })
+    })
 
 })
