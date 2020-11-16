@@ -27,4 +27,21 @@ describe('weatherAppUi', () => {
             ],
         ].join())
     })
+
+    it('displayResults', async () => {
+        const ui = require('../src/ui')
+        const enums = require('../src/enums')
+
+        const spy = jest.spyOn(console, 'log')
+
+        const expectedLines = 62
+        const totalObjects = 10
+        const results = new Array(totalObjects).fill(['Nowhere', enums.emptyData])
+
+        await ui.displayResults(results)
+
+        const lines = spy.mock.calls.length
+
+        expect(lines).toEqual(expectedLines)
+    })
 })
