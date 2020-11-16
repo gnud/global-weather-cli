@@ -78,3 +78,6 @@ describe('weatherAppAPIPostal', () => {
 
 })
 
+describe('weatherAppAPIWeather', () => {
+
+})
