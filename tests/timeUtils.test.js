@@ -32,4 +32,25 @@ describe('weatherApp', () => {
         expect(Math.abs(hoursDifference)).toEqual(Math.abs(totalHours))
     })
 
+    it('timeZoneDifferenceJustSeconds', async () => {
+        const timeUtils = require('../src/timeUtils')
+
+        const currentNow = timeUtils.currentTime().utc()
+
+        const hours = 60 * 60 // seconds
+
+        const tzOffsetSeconds = -10800 // "São Paulo, Brazil"
+
+        const totalHours = tzOffsetSeconds / hours
+
+        const calculatedDate = timeUtils.time4Location(tzOffsetSeconds)
+
+        const calcDateHours = calculatedDate.hours()
+        const nowDateHours = currentNow.hours()
+
+        const hoursDifference = nowDateHours - calcDateHours
+
+        expect(Math.abs(hoursDifference)).toEqual(Math.abs(totalHours))
+    })
+
 })
