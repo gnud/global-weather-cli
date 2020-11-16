@@ -1,5 +1,6 @@
 const axios = require('axios')
 const _ = require('lodash')
+const enums = require('./enums')
 
 async function fetchPostalApi(q) {
     const apiEMsg = `App is mis-configured, add your GEO_APIFY_TOKEN key in an .env file`
@@ -9,7 +10,7 @@ async function fetchPostalApi(q) {
 
     if (_.isEmpty(token)) {
         console.log(apiEMsg)
-        return process.exit(1)
+        return process.exit(enums.ExitCodes.GEO_APIFY_MISSING)
     }
 
     return await axios.get(url, {
@@ -29,7 +30,7 @@ async function owAPIFetch(location) {
 
     if (!token) {
         console.log(apiEMsg)
-        return process.exit(2)
+        return process.exit(enums.ExitCodes.WEATHER_API_MISSING)
     }
 
     return await axios.get(url, {
