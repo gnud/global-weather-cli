@@ -4,4 +4,11 @@ const ExitCodes = {
     WEATHER_API_MISSING: 2,
 }
 
+const MatchTypes = {
+    LOCATION: 'location',
+    POSTAL: 'postal',
+    UNKNOWN: 'unknown',
+}
+
 module.exports.ExitCodes = ExitCodes
+module.exports.MatchTypes = MatchTypes
