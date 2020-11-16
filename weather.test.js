@@ -13,13 +13,20 @@ describe('weatherApp', () => {
 })
 
 describe('weatherAppAPIPostal', () => {
+    const OLD_ENV = process.env
+
+    beforeEach(() => {
+        // Some tasks have custom env variables, but some need .env preconfigured ones
+        process.env = {...OLD_ENV}
+    })
+
     it('apiPostalLookupCity', async () => {
         /**
          * GEO_APIFY_TOKEN must be set in the .env file or expect always to fail
          */
 
         const api = require('./src/api')
-        const targetPostalCode = '1000'
+        const targetPostalCode = '1000' // Skopje, Macedonia
 
         jest.spyOn(process, 'exit').mockImplementation((code, a, b, c) => {
             expect(code).toEqual(0)
@@ -30,6 +37,22 @@ describe('weatherAppAPIPostal', () => {
         })
             .catch(err => {
                 expect(err.response.status).toEqual(401)
+            })
+    })
+
+    it('apiPostalLookupCityNoApiKey', async () => {
+        const api = require('./src/api')
+
+        jest.spyOn(process, 'exit').mockImplementation((code, a, b, c) => {
+            expect(code).toEqual(1)
+        })
+
+        delete process.env.GEO_APIFY_TOKEN // Removing token to cause a crash
+        const targetPostalCode = '1000' // Skopje, Macedonia
+
+        await api.fetchPostalApi(targetPostalCode)
+            .then(item => {
+                expect(item).toBeUndefined()
             })
     })
 })
