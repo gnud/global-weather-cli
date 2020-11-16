@@ -105,4 +105,21 @@ describe('weatherAppAPIWeather', () => {
             })
     })
 
+    it('apiWeatherFetchNoApiKey', async () => {
+        const api = require('./src/api')
+        const enums = require('./src/enums')
+
+        jest.spyOn(process, 'exit').mockImplementation((code) => {
+            expect(code).toEqual(enums.ExitCodes.WEATHER_API_MISSING)
+        })
+
+        delete process.env.OPEN_WEATHER_MAP_TOKEN // Removing token to cause a crash
+        const location = 'Skopje' // Skopje, Macedonia
+
+        await api.owAPIFetch(location)
+            .then(item => {
+                expect(item).toBeUndefined()
+            })
+    })
+
 })
