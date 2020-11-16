@@ -6,6 +6,7 @@ describe('weatherApp', () => {
 
         // Note: I know, accessing private or internal member.
         // I was just being lazy to compare the date properly
+        // noinspection JSUnresolvedVariable
         expect(utcNow._isAMomentObject).toBeTruthy()
     })
 })
