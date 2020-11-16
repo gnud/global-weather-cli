@@ -7,7 +7,7 @@ Given an array of inputs (location name, postal code), log the current time and 
 Example:
 
 ```bash
-./weather "New York, 10005, Tokyo, São Paulo, Pluto"
+node ./index.js "New York, 10005, Tokyo, São Paulo, Pluto"
 ```
 
 # Development
@@ -23,7 +23,7 @@ npm install
 Running development
 
 ```
-npm start
+npm start "New York, 10005, Tokyo, São Paulo, Pluto"
 ```
 
 
@@ -61,3 +61,10 @@ allow detection of rules mismatch.
 Open settings go to javascript/libraries and click
 download, find jest and click OK.
 Now "describe" and "it" are recognizable by the IDE.
+
+# TODOS
+
+- [ ] More unit test for postal codes
+- [ ] More unit tests for weather API
+- [ ] More unit tests for app arguments handling
+- [ ] Format the date time output

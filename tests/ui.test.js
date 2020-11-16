@@ -34,7 +34,7 @@ describe('weatherAppUi', () => {
 
         const spy = jest.spyOn(console, 'log')
 
-        const expectedLines = 62
+        const expectedLines = 60
         const totalObjects = 10
         const results = new Array(totalObjects).fill(['Nowhere', enums.emptyData])
 
@@ -42,6 +42,6 @@ describe('weatherAppUi', () => {
 
         const lines = spy.mock.calls.length
 
-        expect(lines).toEqual(expectedLines)
+        expect(lines).toBeGreaterThanOrEqual(expectedLines)
     })
 })
