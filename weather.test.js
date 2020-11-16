@@ -122,4 +122,24 @@ describe('weatherAppAPIWeather', () => {
             })
     })
 
+    it('apiWeatherFetchInvalidApiKey', async () => {
+        const api = require('./src/api')
+        const enums = require('./src/enums')
+
+        jest.spyOn(process, 'exit').mockImplementation((code) => {
+            expect(code).toEqual(enums.ExitCodes.WEATHER_API_MISSING)
+        })
+
+        process.env.OPEN_WEATHER_MAP_TOKEN = 'COME-ON-LET-ME-IN-PLEASE'
+        const location = 'Skopje' // Skopje, Macedonia
+
+        await api.owAPIFetch(location)
+            .then(item => {
+                expect(item).toBeUndefined() // should not stop here
+            })
+            .catch(err => {
+                expect(err.response.status).toEqual(401)
+            })
+    })
+
 })
