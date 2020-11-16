@@ -18,4 +18,14 @@ async function displaySingleRow(data) {
     console.log('+'.repeat(80))
 }
 
+async function displayResults(results) {
+    console.log('Results')
+    console.log('-'.repeat(80))
+
+    for await (let data of results) {
+        await displaySingleRow(data)
+    }
+}
+
 module.exports.displaySingleRow = displaySingleRow
+module.exports.displayResults = displayResults
