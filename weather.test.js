@@ -92,10 +92,10 @@ describe('weatherAppAPIWeather', () => {
         })
 
         await api.owAPIFetch(location).then(item => {
-            expect(item.name).toEqual(location)
+            expect(item.data.name).toEqual(location)
         })
             .catch(err => {
-                expect(err.response.status).toEqual(401)
+                expect(err.status).toEqual(401)
             })
     })
 
