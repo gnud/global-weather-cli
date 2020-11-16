@@ -83,6 +83,13 @@ describe('weatherAppAPIPostal', () => {
 })
 
 describe('weatherAppAPIWeather', () => {
+    const OLD_ENV = process.env
+
+    beforeEach(() => {
+        // Some tasks have custom env variables, but some need .env preconfigured ones
+        process.env = {...OLD_ENV}
+    })
+
     it('apiWeatherFetch', async () => {
         /**
          * OPEN_WEATHER_MAP_TOKEN must be set in the .env file or expect always to fail
@@ -136,6 +143,22 @@ describe('weatherAppAPIWeather', () => {
         await api.owAPIFetch(location)
             .then(item => {
                 expect(item).toBeUndefined() // should not stop here
+            })
+            .catch(err => {
+                expect(err.response.status).toEqual(401)
+            })
+    })
+
+    it('apiWeatherProcessData', async () => {
+        const api = require('./src/api')
+
+        const location = 'Skopje' // Skopje, Macedonia
+
+        await api.processWeather(location)
+            .then(item => {
+                expect(item.data).toBeInstanceOf(Object)
+                expect(typeof item.timezone).toBe('number')
+                expect(item.timezone).toBeGreaterThan(0)
             })
             .catch(err => {
                 expect(err.response.status).toEqual(401)
