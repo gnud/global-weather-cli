@@ -1,5 +1,19 @@
 # Weather CLI console app
 
+**NOTE**: if someone wants to test the project it's needed to have .env file in the root of the project
+
+```.env
+GEO_APIFY_TOKEN=
+OPEN_WEATHER_MAP_TOKEN=
+```
+I can provide you with my tokens or you can create your own from 
+
+https://www.geoapify.com/
+
+https://openweathermap.org/api
+
+Some tests need a token as well.
+
 # Usage
 
 Given an array of inputs (location name, postal code), log the current time and weather for those locations.
